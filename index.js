@@ -17,14 +17,20 @@ operationButtons.forEach(function(operationButton) {
 })
 
 equalButton.addEventListener('click', function() {
-  const operationResult = calculatorScreen.value;
-  const lastCharacterFromResult = operationResult.slice(-1);
+  const screenValue = calculatorScreen.value;
+  const lastCharacterFromResult = screenValue.slice(-1);
 
-  if (lastCharacterFromResult.match(/[+-/*0]/) || operationResult === '') {
+  if (lastCharacterFromResult.match(/[+-/*]/) || screenValue === '') {
     errorMessage.innerText = 'wrong format';
   } else {
-    calculatorScreen.value = eval(operationResult);
+    let operationResult = new Function('return ' + screenValue)();
     errorMessage.innerText = '';
+
+    if (screenValue.includes('.')) {
+      calculatorScreen.value = operationResult.toFixed(2);
+    } else {
+      calculatorScreen.value = operationResult;
+    }
   }
 })
 

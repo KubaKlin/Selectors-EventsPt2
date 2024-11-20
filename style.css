@@ -4,9 +4,13 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   background: #666;
   justify-content: center;
   align-items: center;
@@ -15,19 +19,17 @@ body {
  }
 
 .calculator {
-  position: relative;
   height: 525px;
   width: 320px;
   border-radius: 10px;
   background: #222;
-  overflow: hidden;
   box-shadow: 4px 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .screen {
   width: 100%;
   height: 130px;
-  border: none;
+  border: 0px solid transparent;
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -42,8 +44,9 @@ body {
 }
 
 .error-message {
-  position: absolute;
-  top: 94px;
+  position: relative;
+  top: -36px;
+  height: 0;
   right: 18px;
   color: red;
   width: 100%;
