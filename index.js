@@ -23,14 +23,20 @@ equalButton.addEventListener('click', function() {
   if (lastCharacterFromResult.match(/[+-/*]/) || screenValue === '') {
     errorMessage.innerText = 'wrong format';
   } else {
-    let operationResult = new Function('return ' + screenValue)();
-    errorMessage.innerText = '';
-
-    if (screenValue.includes('.')) {
-      calculatorScreen.value = operationResult.toFixed(2);
-    } else {
-      calculatorScreen.value = operationResult;
+    if (screenValue.includes('+')) {
+      let numbers = screenValue.split('+');
+      calculatorScreen.value = Math.round((Number(numbers[0]) + Number(numbers[1])) * 100) / 100;
+    } else if (screenValue.includes('-')) {
+      let numbers = screenValue.split('-');
+      calculatorScreen.value = Math.round((Number(numbers[0]) - Number(numbers[1])) * 100) / 100;
+    } else if (screenValue.includes('*')) {
+      let numbers = screenValue.split('*');
+      calculatorScreen.value = Math.round((Number(numbers[0]) * Number(numbers[1])) * 100) / 100;
+    } else if (screenValue.includes('/')) {
+      let numbers = screenValue.split('/');
+      calculatorScreen.value = Math.round((Number(numbers[0]) / Number(numbers[1])) * 100) / 100;
     }
+    errorMessage.innerText = '';
   }
 })
 
