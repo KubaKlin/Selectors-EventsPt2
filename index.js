@@ -6,7 +6,7 @@ const errorMessage = document.querySelector('.error-message');
 
 operationButtons.forEach(function(operationButton) {
   operationButton.addEventListener('click', function() {
-    let operationValue = operationButton.innerText;
+    operationValue = operationButton.innerText;
 
     if (calculatorScreen.value.length < 9) {
       calculatorScreen.value += operationValue;
@@ -24,16 +24,16 @@ equalButton.addEventListener('click', function() {
     errorMessage.innerText = 'wrong format';
   } else {
     if (screenValue.includes('+')) {
-      let numbers = screenValue.split('+');
+      numbers = screenValue.split('+');
       calculatorScreen.value = Math.round((Number(numbers[0]) + Number(numbers[1])) * 100) / 100;
     } else if (screenValue.includes('-')) {
-      let numbers = screenValue.split('-');
+      numbers = screenValue.split('-');
       calculatorScreen.value = Math.round((Number(numbers[0]) - Number(numbers[1])) * 100) / 100;
     } else if (screenValue.includes('*')) {
-      let numbers = screenValue.split('*');
+      numbers = screenValue.split('*');
       calculatorScreen.value = Math.round((Number(numbers[0]) * Number(numbers[1])) * 100) / 100;
     } else if (screenValue.includes('/')) {
-      let numbers = screenValue.split('/');
+      numbers = screenValue.split('/');
       calculatorScreen.value = Math.round((Number(numbers[0]) / Number(numbers[1])) * 100) / 100;
     }
     errorMessage.innerText = '';
