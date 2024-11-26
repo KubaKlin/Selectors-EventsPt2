@@ -6,15 +6,28 @@ const errorMessage = document.querySelector('.error-message');
 
 operationButtons.forEach(function(operationButton) {
   operationButton.addEventListener('click', function() {
-    operationValue = operationButton.innerText;
+    const operationValue = operationButton.innerText;
 
-    if (calculatorScreen.value.length < 9) {
+    if (calculatorScreen.value.length < 15) {
       calculatorScreen.value += operationValue;
     } else {
-      errorMessage.innerText = 'max 9 digits';
+      errorMessage.innerText = 'max 15 digits';
     }
   })
 })
+
+function roundFloating(screenValue, sign) {
+  const numbers = screenValue.split(sign);
+  if (screenValue.includes('+')) {
+    return calculatorScreen.value = Math.round((Number(numbers[0]) + Number(numbers[1])) * 100) / 100;
+  } else if (screenValue.includes('-')) {
+    return calculatorScreen.value = Math.round((Number(numbers[0]) - Number(numbers[1])) * 100) / 100;
+  } else if (screenValue.includes('*')) {
+    return calculatorScreen.value = Math.round((Number(numbers[0]) * Number(numbers[1])) * 100) / 100;
+  } else if (screenValue.includes('/')) {
+    return calculatorScreen.value = Math.round((Number(numbers[0]) / Number(numbers[1])) * 100) / 100;
+  }
+}
 
 equalButton.addEventListener('click', function() {
   const screenValue = calculatorScreen.value;
@@ -23,19 +36,7 @@ equalButton.addEventListener('click', function() {
   if (lastCharacterFromResult.match(/[+-/*]/) || screenValue === '') {
     errorMessage.innerText = 'wrong format';
   } else {
-    if (screenValue.includes('+')) {
-      numbers = screenValue.split('+');
-      calculatorScreen.value = Math.round((Number(numbers[0]) + Number(numbers[1])) * 100) / 100;
-    } else if (screenValue.includes('-')) {
-      numbers = screenValue.split('-');
-      calculatorScreen.value = Math.round((Number(numbers[0]) - Number(numbers[1])) * 100) / 100;
-    } else if (screenValue.includes('*')) {
-      numbers = screenValue.split('*');
-      calculatorScreen.value = Math.round((Number(numbers[0]) * Number(numbers[1])) * 100) / 100;
-    } else if (screenValue.includes('/')) {
-      numbers = screenValue.split('/');
-      calculatorScreen.value = Math.round((Number(numbers[0]) / Number(numbers[1])) * 100) / 100;
-    }
+    roundFloating(screenValue, /[+-/*]/);
     errorMessage.innerText = '';
   }
 })
