@@ -16,8 +16,8 @@ operationButtons.forEach(function(operationButton) {
   })
 })
 
-function roundFloating(screenValue, sign) {
-  const numbers = screenValue.split(sign);
+function roundFloating(screenValue, signs) {
+  const numbers = screenValue.split(signs);
   if (screenValue.includes('+')) {
     return calculatorScreen.value = Math.round((Number(numbers[0]) + Number(numbers[1])) * 100) / 100;
   } else if (screenValue.includes('-')) {
