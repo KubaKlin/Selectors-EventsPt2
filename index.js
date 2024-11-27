@@ -7,41 +7,39 @@ const errorMessage = document.querySelector('.error-message');
 operationButtons.forEach(function(operationButton) {
   operationButton.addEventListener('click', function() {
     const operationValue = operationButton.innerText;
-
-    if (calculatorScreen.value.length < 15) {
-      calculatorScreen.value += operationValue;
-    } else {
-      errorMessage.innerText = 'max 15 digits';
-    }
+    calculatorScreen.innerText += operationValue;
   })
 })
 
-function roundFloating(screenValue, signs) {
-  const numbers = screenValue.split(signs);
+function roundFloating(screenValue) {
   if (screenValue.includes('+')) {
-    return calculatorScreen.value = Math.round((Number(numbers[0]) + Number(numbers[1])) * 100) / 100;
-  } else if (screenValue.includes('-')) {
-    return calculatorScreen.value = Math.round((Number(numbers[0]) - Number(numbers[1])) * 100) / 100;
-  } else if (screenValue.includes('*')) {
-    return calculatorScreen.value = Math.round((Number(numbers[0]) * Number(numbers[1])) * 100) / 100;
-  } else if (screenValue.includes('/')) {
-    return calculatorScreen.value = Math.round((Number(numbers[0]) / Number(numbers[1])) * 100) / 100;
+    const numbers = screenValue.split('+');
+    return calculatorScreen.innerText = Number(numbers[0]) + Number(numbers[1]);
+  } if (screenValue.includes('-')) {
+    const numbers = screenValue.split('-');
+    return calculatorScreen.innerText = numbers[0] - numbers[1];
+  } if (screenValue.includes('*')) {
+    const numbers = screenValue.split('*');
+    return calculatorScreen.innerText = numbers[0] * numbers[1];
+  } if (screenValue.includes('/')) {
+    const numbers = screenValue.split('/');
+    return calculatorScreen.innerText = numbers[0] / numbers[1];
   }
 }
 
 equalButton.addEventListener('click', function() {
-  const screenValue = calculatorScreen.value;
+  const screenValue = calculatorScreen.innerText;
   const lastCharacterFromResult = screenValue.slice(-1);
 
   if (lastCharacterFromResult.match(/[+-/*]/) || screenValue === '') {
     errorMessage.innerText = 'wrong format';
   } else {
-    roundFloating(screenValue, /[+-/*]/);
+    roundFloating(screenValue);
     errorMessage.innerText = '';
   }
 })
 
 clearButton.addEventListener('click', function() {
-  calculatorScreen.value = '';
+  calculatorScreen.innerText = '';
   errorMessage.innerText = '';
 })
