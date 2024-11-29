@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-<script src="index.js" ></script>
-</body>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Lato&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="calculator-wrapper">
+        <div class="calculator">
+          <div class="screen-wrapper">
+            <p id="screen" class="screen"></p>
+            <p class="error-message"></p>
+          </div>
+          <div class="button-wrapper">
+            <button type="button" class="operation-button calculator-button calculator-button-brighter">*</button>
+            <button type="button" class="operation-button calculator-button calculator-button-brighter">/</button>
+            <button type="button" class="operation-button calculator-button calculator-button-brighter">-</button>
+            <button type="button" class="operation-button calculator-button calculator-button-brighter">+</button>
+            <button type="button" class="operation-button calculator-button">7</button>
+            <button type="button" class="operation-button calculator-button">8</button>
+            <button type="button" class="operation-button calculator-button">9</button>
+            <button id="button-clear" type="button" class="calculator-button calculator-button-clear">C</button>
+
+            <button type="button" class="operation-button calculator-button">4</button>
+            <button type="button" class="operation-button calculator-button">5</button>
+            <button type="button" class="operation-button calculator-button">6</button>
+            <button type="button" class="operation-button calculator-button">.</button>
+
+            <button type="button" class="operation-button calculator-button">1</button>
+            <button type="button" class="operation-button calculator-button">2</button>
+            <button type="button" class="operation-button calculator-button">3</button>
+            <button id="button-equal" type="button" class="calculator-button calculator-button-equal">=</button>
+            <button type="button" class="operation-button calculator-button">0</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js" ></script>
+  </body>
 </html>
